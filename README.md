@@ -1,2 +1,5 @@
 # str-hgk-sajat-munka
-Full-Stack-API - Gyakorló feladatok
+
+Module System Gyakorló feladatok
+
+**Full-Stack-API - Training360**
