@@ -1,5 +1,6 @@
 ## 1. Feladat
 Hozz létre egy utils.js nevű fájlt!
+
 Ebben a fájlban készíts el egy függvényt increaseDate névvel!
 A függvény paraméterként egy dátumot vár és egy napszámot. A napszám alapértelmezett értéke 3. A visszatérési értéke az adott dátum napszámmal megnövelt értéke, azaz az 1970 óta eltelt idő milliszekundumban.
 

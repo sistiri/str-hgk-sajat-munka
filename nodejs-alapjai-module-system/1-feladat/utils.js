@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 const increaseDate = (date, days = 3) => date.getTime() + days * 24 * 60 * 60 * 1000
 
 const dateNow = new Date()
@@ -15,12 +13,12 @@ const arrayOfNewDates = [baseDate, dateObj1, dateObj2, dateObj3, dateObj4]
 console.log(arrayOfNewDates)
 
 
-console.log('------------plus3Days---------------')
+console.log('-------plus3Days-with-increaseDate()--------------')
 const plus3days = []
 arrayOfNewDates.forEach(date => plus3days.push(new Date(increaseDate(date))))
 console.log(plus3days)
 
-console.log('--------------increaseDateAndFormat()-------------')
+console.log('--------------increaseAndFormatDate()-------------')
 
 const increaseAndFormatDate = arrayOfDates => {
   const plus3days = []
