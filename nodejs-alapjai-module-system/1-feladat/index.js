@@ -10,4 +10,4 @@ const dateObj4 = new Date(dateNow.setFullYear(2010, 0, 1, 0))
 
 const sampleDates = [baseDate, dateObj1, dateObj2, dateObj3, dateObj4, dateNow]
 
-console.log(dateFormatter.increaseAndFormatDate(sampleDates))
+console.log(dateFormatter(sampleDates))
