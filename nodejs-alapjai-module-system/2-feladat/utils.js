@@ -15,24 +15,32 @@ const actionHeros = [{
 }]
 
 const generateUserList = (userArray) => {
-    const userList = []
+    const userObjList = []
     userArray.forEach(obj => {
         let isAdult = false
         if (obj.age >= 18) {
             isAdult = true
         }
-
-        userList.push(
+        userObjList.push(
             JSON.parse(
                 `{"isAdult": ${isAdult}, "fullName": "${obj.firstName} ${obj.lastName}"}`)
         )
-
-
     })
-    // console.log(userList);
-    return userList
+    console.log(userObjList);
+    return userObjList
 }
 
 generateUserList(actionHeros)
 
+const getUserNames = (userArr) => {
+    let userStringListTemp = ''
+    userArr.forEach(obj => {
+        userStringListTemp = userStringListTemp +`${obj.firstName} ${obj.lastName},`
+    })
+    const userStringList = userStringListTemp.slice(0, -1)
+    console.log(userStringList)
+    return UserStringList
+}
+
+getUserNames(actionHeros)
 
