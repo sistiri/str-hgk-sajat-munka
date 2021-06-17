@@ -29,7 +29,8 @@ const generateUserList = (userArray) => {
 
 
     })
-    console.log(userList);
+    // console.log(userList);
+    return userList
 }
 
 generateUserList(actionHeros)
