@@ -14,10 +14,6 @@ const actionHeros = [{
     age: 70
 }]
 
-//  { firstName, lastName, age }
-// isAdult : true/false érték attól függően, hogy elmúlt-e 18 éves
-// fullName: 
-
 const generateUserList = (userArray) => {
     const userList = []
     userArray.forEach(obj => {
