@@ -1,16 +1,21 @@
-// const Promise = require('bluebird')
-// const fs = Promise.promisifyAll(require('fs'))
-const { readFileSync, writeFileSync } = require('fs')
-
+const fs = require('fs')
 
 const MoviesApi = (path, prop) => ({
-  get () {
-    const dataString = readFileSync(path)
+  async get () {
+    const dataString = await fs.readFile(path, { encoding: 'utf-8' },
+      (err, data) => {
+        if (err) throw err
+        console.log(data)
+      })
     return JSON.parse(dataString)[prop]
   },
 
   save (data) {
-    writeFileSync(path, JSON.stringify({ [prop]: data }))
+    fs.writeFile(path, JSON.stringify({ [prop]: data }),
+      (err, data) => {
+        if (err) throw err
+        console.log(data)
+      })
   }
 })
 
