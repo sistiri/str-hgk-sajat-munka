@@ -12,7 +12,6 @@ console.log('----------arrayOfNewDates-------------')
 const arrayOfNewDates = [baseDate, dateObj1, dateObj2, dateObj3, dateObj4]
 console.log(arrayOfNewDates)
 
-
 console.log('-------plus3Days-with-increaseDate()--------------')
 const plus3days = []
 arrayOfNewDates.forEach(date => plus3days.push(new Date(increaseDate(date))))
