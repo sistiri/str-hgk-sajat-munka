@@ -34,9 +34,9 @@ try {
       appendFileWrapper(targetFile, chunk)
     })
 
-  logger.success('File transform successful.')
+  logger.success('File transform successful.') // ezt minidg kiirja, akkor is, ha rossz a file neve :(
 } catch (error) {
-  logger.error(error.message)
+  logger.error(error.message) // ezt akkor sem irja ki, ha rossz a file neve, es nem tud stream-elni
 }
 
 //
