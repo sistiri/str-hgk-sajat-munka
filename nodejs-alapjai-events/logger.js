@@ -6,11 +6,11 @@ class Logger extends EventEmitter {
   }
 
   error (string) {
-    console.log('\x1b[31m', string)
+    console.log('\x1b[31m', string, '\x1b[0m')
   }
 
   success (string) {
-    console.log('\x1b[32m', string)
+    console.log('\x1b[32m', string, '\x1b[0m')
   }
 }
 
