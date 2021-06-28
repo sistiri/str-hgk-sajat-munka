@@ -3,6 +3,7 @@ const logger = new Logger()
 const path = require('path')
 const { createReadStream } = require('fs')
 const { Transform } = require('stream')
+// const transform = new Transform()
 // const { createWriteStream } = require('fs')
 const { appendFileWrapper } = require('./utils')
 
@@ -31,7 +32,7 @@ try {
 
   readableStream.pipe(capitalizeString)
     .on('data', (chunk) => {
-      appendFileWrapper(targetFile, chunk) 
+      appendFileWrapper(targetFile, chunk)
     })
 
   logger.success('File transform successful.') // ezt minidg kiirja, akkor is, ha rossz a file neve :(
@@ -57,3 +58,11 @@ try {
 
 // const upperCase = createUpperCaseStream()
 // process.stdin.pipe(upperCase).pipe(process.stdout)
+
+//
+
+// another HINT from web:
+
+// fs.createReadStream('input/file.txt')
+//      .pipe(new YourTransformStream())
+//      .pipe(fs.createWriteStream('output/file.txt'))
