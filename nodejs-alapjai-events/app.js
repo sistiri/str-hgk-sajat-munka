@@ -9,7 +9,7 @@ const { appendFileWrapper } = require('./utils')
 const createCapitalizeStream = () => {
   return new Transform({
     transform (chunk, enc, cb) {
-      const capitalizeString = chunk.toString()
+      const capitalizeString = chunk.toString() // a chunk-okra darabolas osszezavarja a szo eleji nagybetusse alakitast
         .split(' ')
         .map(item => item.replace(item.charAt(0), item.charAt(0).toUpperCase()))
         .join(' ')
@@ -18,7 +18,7 @@ const createCapitalizeStream = () => {
   })
 }
 
-const sourceFile = './iciri-picir.txt'
+const sourceFile = './iciri-piciri.txt'
 
 try {
   const targetFile = `${path.parse(sourceFile).name} Copy.txt`
@@ -31,7 +31,7 @@ try {
 
   readableStream.pipe(capitalizeString)
     .on('data', (chunk) => {
-      appendFileWrapper(targetFile, chunk)
+      appendFileWrapper(targetFile, chunk) 
     })
 
   logger.success('File transform successful.') // ezt minidg kiirja, akkor is, ha rossz a file neve :(
