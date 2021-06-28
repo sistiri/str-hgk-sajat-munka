@@ -10,8 +10,7 @@ const { appendFile } = require('fs')
 
 const appendFileWrapper = (path, data) => {
   appendFile(path, data, (err) => {
-    if (err) console.log('erroooorrrrrrr')
-    // logger.success('File transform successful.')
+    if (err) console.error()
   })
 }
 
