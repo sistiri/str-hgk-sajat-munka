@@ -18,4 +18,3 @@ http.createServer(({ url }, res) => {
   .on('request', req => console.log(`Date: ${timeStamp} - URL: ${req.url} - Method: ${req.method}`))
   .on('listening', () => console.log(`Server is running at http://127.0.0.1:${port}`))
   .listen(port)
-
