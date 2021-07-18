@@ -15,12 +15,14 @@ db.movies.count({$or: [{category: "ACTION"}, {category: "ROMANTIC"}]})
 ```
 3. Kérdezd le a „FANTASY” filmek nevét és a kategóriáját. Mentsd le a listát (Cursor-t) egy változóba!
 ```
-const fantasyMovies = db.movies.find({category: "FANTASY"}, {title: 1, category: 1})
+const fantasyMovies = db.movies.find({category: "FANTASY"}, {title: 1, category: 1}).toArray() 
 ```
+
 4. Írj egy ciklust, amely végigiterál a listán, és kiírja filmek a nevét és kategóriáját => példa: Végtelen történet: FANTASY (tipp: print() függvénnyel lehet kiíratni az értékeket Mongo shell-ben)!
 ```
-fantasyMovies.forEach( function(data){ print("Title: " +  data.title + ", Category: " + data.category)})
+fantasyMoviies.forEach( function(data){ print("Title: " +  data.title + ", Category: " + data.category)})
 ```
+
 5. Készíts egy lekérdezést, amely fordított sorrendben (_id) adja vissza csak a filmcímeket!
 ```
 db.movies.find().sort( { _id: -1 } )
