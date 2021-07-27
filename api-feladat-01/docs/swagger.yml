@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: API-Feladat-01
+  description: Created for API-Feladat-01 to practice Swagger documentation
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/person/count:
+    get:
+      description: Returns the number of vaccinated people
+      responses:
+        '200':
+          description: List of persons returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/person/vaccinated:
+    get:
+      description: Returns the list of vaccinated people
+      responses:
+        '200':
+          description: List of persons returned successfully
+          content:
+            application/json:
+              # schema:
+              #   type: array
+              #   items:
+              #     $ref: '#/components/schemas/Person'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              # schema:
+              #   $ref: '#/components/schemas/Error'
+    
+      
+  
+# components:
+#   schemas:
+#     Person:
+#       type: object
+#       required:
+#         - first_name
+#         - last_name
+#         - email
+#       properties:
+#         first_name:
+#           type: string
+#         last_name:
+#           type: string
+#         email:
+#           type: string
+#     Error:
+#       type: object
+#       required:
+#         - message
+#         - has_error
+#       properties:
+#         message:
+#           type: string
+#         has_error:
+#           type: boolean
