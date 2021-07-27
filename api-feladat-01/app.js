@@ -24,8 +24,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
-app.use('/people', peopleRouter)
-app.use('/api', require('./routes/api'))
+app.use('/person', peopleRouter)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 // catch 404 and forward to error handler
