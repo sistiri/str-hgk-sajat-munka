@@ -11,6 +11,7 @@ import { LoginComponent } from './page/login/login.component';
 import { AdminComponent } from './page/admin/admin.component';
 import { EditorComponent } from './page/editor/editor.component';
 import { ForbiddenComponent } from './page/forbidden/forbidden.component';
+import { JwtInterceptorService } from './service/jwt-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { ForbiddenComponent } from './page/forbidden/forbidden.component';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

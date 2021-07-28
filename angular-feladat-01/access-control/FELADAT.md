@@ -125,8 +125,18 @@ import { HttpClientModule } from '@angular/common/http'
 8. Authorization
  - `ng g service service/auth`
  - `ng g service service/user`
+Login, Logout methods
+UserSerice methods
 
+9. JWT Interceptor Service
+- `ng g service service/jwt-interceptor`
 
+app.module.ts:
+```
+providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}
+  ],
+```
 
 
 
