@@ -112,6 +112,21 @@ nav.component.html:
         [routerLink]="link.href">{{ link.label }}</a>
   ```
 
+6. Create User Model
+- `ng g class model/user`
+
+7. Import HttpClientModule to app.module.ts
+
+```
+import { HttpClientModule } from '@angular/common/http'
+```
+> Don't forget to insert it to imports[] 
+
+8. Authorization
+ - `ng g service service/auth`
+ - `ng g service service/user`
+
+
 
 
 
