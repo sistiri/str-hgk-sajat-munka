@@ -137,6 +137,13 @@ providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}
   ],
 ```
+10. Login Component
+onLogin() method requires FormsModule
+app.module.ts: 
+```
+import { FormsModule } from '@angular/forms'
+```
+> Don't forget to insert it to imports[] 
 
 
 
