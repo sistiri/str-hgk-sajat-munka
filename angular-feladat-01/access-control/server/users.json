@@ -22,7 +22,7 @@
       "last_name": "Tyt",
       "email": "ntyt2@psu.edu",
       "password": "$2a$10$eZMp/S6cJtgOTy94BKQaAun/m.f3eIu8smIpIi2tvQUgGAiwxfDsy",
-      "role": 3
+      "role": 2
     },
     {
       "id": 4,
@@ -30,7 +30,7 @@
       "last_name": "Bloodworthe",
       "email": "gbloodworthe3@mail.ru",
       "password": "$2a$10$WZHBWjrMuKdOwaVCrUy3/u1pUTNdwvBm0SBsSxlf4bcYliTlBa0sm",
-      "role": 1
+      "role": 3
     },
     {
       "id": 5,

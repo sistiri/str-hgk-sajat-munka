@@ -8,10 +8,10 @@ Almappa: angular-feladat-01
 Készíts egy egyszerű, Angular alapú alkalmazást. Az alkalmazás célja, hogy ki- és bejelentkezést nyújtson a felhasználóknak.
 
 ## 1. Oldalak:
-- home: a felhasználók bejelentkezés nélkül is elérhetik
-- editor: a felhasználók csak editor vagy magasabb jogosultsággal érhetik el
-- admin: a felhasználók csak admin jogosultsággal érhetik el
-- login: minden felhasználó elérheti, a bejelentkezést valósítja meg. Sikeres belépés esetén a home oldalra irányít át.
+- home: a felhasználók bejelentkezés nélkül is elérhetik 1
+- editor: a felhasználók csak editor vagy magasabb jogosultsággal érhetik el 2
+- admin: a felhasználók csak admin jogosultsággal érhetik el 3
+- login: minden felhasználó elérheti, a bejelentkezést valósítja meg. Sikeres belépés esetén a home oldalra irányít át. 1
 
 ## 2. Autentikáció és autorizáció megvalósítása: 
 - Az autentikációhoz a json-server-auth NodeJS modult használd.
@@ -146,6 +146,35 @@ import { FormsModule } from '@angular/forms'
 > Don't forget to insert it to imports[] 
 
 11. NavComponent
+```
+export class NavComponent implements OnInit, OnDestroy {
+
+  navigation = this.config.navigation
+  loginStatus = false;
+  userSub: Subscription = new Subscription();
+  user: User | null = null
+
+  constructor(
+    private config: ConfigService,
+    private auth: AuthService,
+  ) { }
+
+  ngOnInit(): void {
+    this.userSub = this.auth.currentUserSubject.subscribe(
+      user => this.user = user
+    );
+  }
+
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
+  }
+
+  onLogout() {
+    this.auth.logout();
+  }
+
+}
+```
 
 12. Create routes.json in the root
 
@@ -175,7 +204,7 @@ export class AuthGuardService implements CanActivate {
   }
 }
 ```
-13. Impelement AuthGuardService with CanActivate rules
+13. Impelement AuthGuardService with CanActivate
 
 app.routing.module.ts:
 ```
@@ -185,6 +214,45 @@ app.routing.module.ts:
     canActivate: [AuthGuardService],
   },
 ```
+14. Create RoleGuardService (implements CanActivate)
+- `ng g service service/role-guard`
+
+```
+export class RoleGuardService implements CanActivate {
+
+  constructor(
+    public auth: AuthService,
+    public router: Router,
+  ) { }
+
+  canActivate(route: ActivatedRouteSnapshot): boolean {
+    const expectedRole = route.data.expectedRole;
+    if (
+      !this.auth.currentUserValue ||
+      !this.auth.currentUserValue.role ||
+      this.auth.currentUserValue.role < expectedRole
+    ) {
+      this.router.navigate(['forbidden']);
+      return false;
+    }
+    return true
+  }
+}
+```
+15. Impelement RoleGuardService with CanActivate and Data
+
+app.routing.module.ts:
+```
+{
+    path: 'editor',
+    component: EditorComponent,
+    canActivate: [AuthGuardService, RoleGuardService],
+    data: {
+      expectedRole: 2,
+    },
+  },
+```
+
 
 
 ## + + + + + + + + + + + + + +
