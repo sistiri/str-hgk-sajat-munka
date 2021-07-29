@@ -5,6 +5,7 @@ import { EditorComponent } from './page/editor/editor.component';
 import { ForbiddenComponent } from './page/forbidden/forbidden.component';
 import { HomeComponent } from './page/home/home.component';
 import { LoginComponent } from './page/login/login.component';
+import { AuthGuardService } from './service/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -18,10 +19,12 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: 'editor',
     component: EditorComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: 'forbidden',

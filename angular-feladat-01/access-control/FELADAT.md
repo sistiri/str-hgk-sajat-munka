@@ -145,6 +145,46 @@ import { FormsModule } from '@angular/forms'
 ```
 > Don't forget to insert it to imports[] 
 
+11. NavComponent
+
+12. Create routes.json in the root
+
+```
+{
+  "users": 660
+}
+```
+
+12. Create AuthGuardService (implements CanActivate)
+- `ng g service service/auth-guard`
+
+```
+export class AuthGuardService implements CanActivate {
+
+  constructor(
+    public auth: AuthService,
+    public router: Router,
+  ) { }
+
+  canActivate(): boolean {
+    if (!this.auth.currentUserValue) {
+      this.router.navigate(['login']);
+      return false;
+    }
+    return true
+  }
+}
+```
+13. Impelement AuthGuardService with CanActivate rules
+
+app.routing.module.ts:
+```
+{
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuardService],
+  },
+```
 
 
 ## + + + + + + + + + + + + + +
